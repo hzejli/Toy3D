@@ -976,7 +976,7 @@ let darkMatterDensity=0;
 var params = {
     Radius_SImulation: 500,
     scale: 0.0005,
-    deltaTime: 0.002, // deltatime simulation in Giga years
+    deltaTime: 0.002,
     numStarsNeg: 100000,
     numStarsPos:20000,
     densityNeg: -0.1*Math.pow(10,5), // solar mass / ly^3 (density mass of nega stars)
@@ -1105,82 +1105,6 @@ gui.add(params, 'runRealTime');
 
 
 let rotationCurveLine = null;
-
-/*function plotGalacticRotationCurve(stars, numSegments = 50) {
-    // Step 1: Filter to get only positive matter stars
-      // Step 1: Filter to get only positive matter stars
-      const matterStars = stars.filter(star => star.type === 'matter');
-
-      // Step 2: Calculate the center of mass (CoM) of positive matter stars
-      let totalMass = 0;
-      let comX = 0, comY = 0, comZ = 0;
-  
-      matterStars.forEach(star => {
-          totalMass += star.massG;
-          comX += star.posX * star.massG;
-          comY += star.posY * star.massG;
-          comZ += star.posZ * star.massG;
-      });
-  
-      comX /= totalMass;
-      comY /= totalMass;
-      comZ /= totalMass;
-  
-      // Step 3: Calculate the radius and velocity norm for each matter star
-      const data = matterStars.map(star => {
-          const dx = star.posX - comX;
-          const dz = star.posZ - comZ;
-          const radius = Math.sqrt(dx * dx + dz * dz); // Use x and z for the radius
-          const velocityNorm = Math.sqrt(star.velX * star.velX + star.velY * star.velY + star.velZ * star.velZ);
-          return { radius, velocityNorm };
-      });
-       // Calculate the maximum velocity norm
-        const maxVelocity = Math.max(...data.map(point => point.velocityNorm));
-  
-      // Step 4: Sort data by radius
-      data.sort((a, b) => a.radius - b.radius);
-  
-      // Step 5: Divide the radius into segments and calculate average velocity for each segment
-      const maxRadius = data[data.length - 1].radius;
-      const segmentSize = maxRadius / numSegments;
-      const segmentData = Array.from({ length: numSegments }, (_, i) => ({ radius: 0, avgVelocity: 0, count: 0 }));
-  
-      data.forEach(point => {
-          const segmentIndex = Math.floor(point.radius / segmentSize);
-          if (segmentIndex < numSegments) {
-              segmentData[segmentIndex].radius += point.radius;
-              segmentData[segmentIndex].avgVelocity += point.velocityNorm;
-              segmentData[segmentIndex].count += 1;
-          }
-      });
-  
-      segmentData.forEach(segment => {
-          if (segment.count > 0) {
-              segment.radius /= segment.count;
-              segment.avgVelocity /= segment.count;
-          }
-      });
-  
-      // Step 6: Filter out empty segments
-      const filteredSegmentData = segmentData.filter(segment => segment.count > 0);
-  
-      // Clear the canvas
-      overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
-  
-      // Step 7: Draw the curve on the overlay canvas
-      overlayContext.beginPath();
-      overlayContext.moveTo(0, overlayCanvas.height);
-  
-      filteredSegmentData.forEach(segment => {
-          const x = (segment.radius / maxRadius) * overlayCanvas.width;
-          const y = overlayCanvas.height - (segment.avgVelocity / maxVelocity * overlayCanvas.height);
-          overlayContext.lineTo(x, y);
-      });
-  
-      overlayContext.strokeStyle = 'red';
-      overlayContext.lineWidth = 2; // Adjust thickness
-      overlayContext.stroke();
-}*/
 
 function plotGalacticRotationCurve(stars, numSegments = 50) {
     // Filtrer les étoiles de type matière ordinaire
