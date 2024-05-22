@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Galaxy Simulation</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+                canvas { display: block; }
+                #overlayCanvas {
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                    border: 1px solid red;
+                }
+        
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <canvas id="overlayCanvas" width="600" height="400"></canvas>
+    <!--<button id="selectFolderButton">Select Folder for Saving Data</button>-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/gpu.js/dist/gpu-browser.min.js"></script>-->
+
+    <script src="https://cdn.jsdelivr.net/npm/gpu.js@latest/dist/gpu-browser.min.js"></script>
+
+
+
+    <!--<script type="module" src="octree.js"></script>-->
+    <script type="module" src="3D_cloud_buffer.js"></script>
+    
+</body>
+</html>
