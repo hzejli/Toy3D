@@ -470,8 +470,8 @@ function initializeComputeForcesKernel(numStars) {
     // Initialize GPU instance if not already initialized or if destroyed
     console.log('init gpu')
     // HZ - BEGIN - 21/05/2024
-    //const gpu = new GPU.GPU({mode: 'gpu'});
-    const gpu = new GPU();
+    const gpu = new GPU.GPU({mode: 'gpu'});
+    //const gpu = new GPU();
     // HZ - END - 21/05/2024
     gpu.maxLoopSize = 30000000
     // Adjust the output size based on the number of stars
@@ -1199,7 +1199,7 @@ function plotGalacticRotationCurve(stars, numSegments = 50) {
     overlayContext.fillStyle = 'white';
     overlayContext.font = '16px Arial';
     // Libellé de l'axe des abscisses 
-    overlayContext.fillText('Distance (kpc)', overlayCanvas.width / 2, overlayCanvas.height - 10);
+    overlayContext.fillText('Distance (al)', overlayCanvas.width / 2, overlayCanvas.height - 10);
     // Libellé de l'axe des ordonnées
     overlayContext.save();
     overlayContext.rotate(-Math.PI / 2);
