@@ -51,6 +51,29 @@ function movingAverage(data, windowSize) {
 }
 // HZ - END - 21/05/2024
 
+// HZEJLI - 01/06/2024 - BEGIN
+let timerInterval;
+let elapsedTime = 0;
+
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        elapsedTime += 1;
+        document.getElementById('timer').innerText = `Time Elapsed: ${elapsedTime}s`;
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    elapsedTime = 0;
+    document.getElementById('timer').innerText = `Time Elapsed: 0s`;
+}
+
+// HZEJLI - 01/06/2024 - END
+
+
+
+
 class Cloud {
     constructor(stars) {
       this.stars = stars;
@@ -990,6 +1013,9 @@ var params = {
     colorPos: '#00ff00',
     timestep:100,
     initialize: function() {
+        // HZEJLI - 01/06/2024 - BEGIN
+        stopTimer();
+        // HZEJLI - 01/06/2024 - END
         Radius_SImulation= params.Radius_SImulation;
         scale = params.scale;
         deltaTime= params.deltaTime;
@@ -1018,6 +1044,9 @@ var params = {
         initSimulation()
     },
     runRealTime: function() {
+        // HZEJLI - 01/06/2024 - BEGIN
+        startTimer(); 
+        // HZEJLI - 01/06/2024 - END
         // Code to run the simulation in real time
         //animate2();
         //animateLeap()
