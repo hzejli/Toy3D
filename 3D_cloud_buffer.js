@@ -53,20 +53,22 @@ function movingAverage(data, windowSize) {
 
 // HZEJLI - 01/06/2024 - BEGIN
 let timerInterval;
-let elapsedTime = 0;
+let startTime;
 
 function startTimer() {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        elapsedTime += 1;
-        document.getElementById('timer').innerText = `Time Elapsed: ${elapsedTime}s`;
-    }, 1000);
+    stopTimer();  // Ensure any existing timer is stopped before starting a new one
+    startTime = Date.now();
+    timerInterval = setInterval(updateTimer, 1000);
 }
 
 function stopTimer() {
     clearInterval(timerInterval);
-    elapsedTime = 0;
     document.getElementById('timer').innerText = `Time Elapsed: 0s`;
+}
+
+function updateTimer() {
+    const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+    document.getElementById('timer').innerText = `Time Elapsed: ${elapsedTime}s`;
 }
 
 // HZEJLI - 01/06/2024 - END
