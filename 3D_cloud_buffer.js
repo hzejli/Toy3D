@@ -63,20 +63,16 @@ function startTimer() {
 
 function stopTimer() {
     clearInterval(timerInterval);
-    document.getElementById('timer').innerText = `Temps Écoulé: 0s`;
+    document.getElementById('timer').innerText = `Time Elapsed: 0s`;
 }
 
 function updateTimer() {
     const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-    document.getElementById('timer').innerText = `Temps Écoulé: ${elapsedTime}s`;
+    document.getElementById('timer').innerText = `Time Elapsed: ${elapsedTime}s`;
 }
+
 // HZEJLI - 01/06/2024 - END
 
-// HZEJLI - 02/06/2024 - BEGIN
-let lapCounter = 0;
-let distanceTraveled = 0;
-const galaxyRadius = 50000; // Rayon moyen de la galaxie => par défaut galactR: 25 or 1 unité = 2000 al donc galaxyRadius = 50000 al
-// HZEJLI - 02/06/2024 - END
 
 
 
@@ -1458,24 +1454,6 @@ function animateLp() {
     cloud.updateCloud();
     controls.update();
     plotGalacticRotationCurve(stars);
-
-    // HZEJLI - 02/06/2024 - BEGIN
-    // Calculer la distance parcourue par une étoile
-    const star = stars[0];
-    const distance = Math.sqrt(star.velX * star.velX + star.velY * star.velY + star.velZ * star.velZ) * deltaTime;
-
-    // MAJ la distance totale parcourue
-    distanceTraveled += distance;
-
-    // Vérifier si un tour complet est réalisé
-    if (distanceTraveled >= 2 * Math.PI * galaxyRadius) {
-        lapCounter++;
-        distanceTraveled = 0; // Réinitialiser la distance parcourue
-    }
-    // MAJ l'affichage du compteur de tours
-    document.getElementById('lapCounter').innerText = `Nombre de Tours de la Galaxie: ${lapCounter}`;
-    // HZEJLI - 02/06/2024 - END
-
     renderer.render(scene, camera);
     
 }
