@@ -72,11 +72,11 @@ function updateTimer() {
 }
 // HZEJLI - 01/06/2024 - END
 
-// HZEJLI - 01/06/2024 - BEGIN
+// HZEJLI - 02/06/2024 - BEGIN
 let lapCounter = 0;
 let distanceTraveled = 0;
-const galaxyRadius = 250; // Average radius of the galaxy
-// HZEJLI - 01/06/2024 - END
+const galaxyRadius = 50000; // Rayon moyen de la galaxie => par défaut galactR: 25 or 1 unité = 2000 al donc galaxyRadius = 50000 al
+// HZEJLI - 02/06/2024 - END
 
 
 
